@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Automated Door</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #eef;
+      font-family: Arial, sans-serif;
+    }
+
+    .door-container {
+      position: relative;
+      width: 300px;
+      height: 400px;
+      background-color: #444;
+      border: 5px solid #222;
+      overflow: hidden;
+    }
+
+    .door {
+      position: absolute;
+      width: 50%;
+      height: 100%;
+      background-color: #aaa;
+      transition: transform 1s ease;
+    }
+
+    .left-door {
+      left: 0;
+      border-right: 2px solid #000;
+    }
+
+    .right-door {
+      right: 0;
+      border-left: 2px solid #000;
+    }
+
+    .open-left {
+      transform: translateX(-100%);
+    }
+
+    .open-right {
+      transform: translateX(100%);
+    }
+
+    .controls {
+      position: absolute;
+      bottom: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="door-container">
+    <div id="leftDoor" class="door left-door"></div>
+    <div id="rightDoor" class="door right-door"></div>
+    <div class="controls">
+      <button onclick="toggleDoor()">Toggle Door</button>
+    </div>
+  </div>
+
+  <script>
+    let isOpen = false;
+
+    function toggleDoor() {
+      const left = document.getElementById('leftDoor');
+      const right = document.getElementById('rightDoor');
+
+      if (!isOpen) {
+        left.classList.add('open-left');
+        right.classList.add('open-right');
+      } else {
+        left.classList.remove('open-left');
+        right.classList.remove('open-right');
+      }
+
+      isOpen = !isOpen;
+    }
+  </script>
+
+</body>
+</html>
